@@ -20,4 +20,11 @@ public class pieces {
     public int getY() {
         return y;
     }
+
+    public couleur getC() {return c;}
+
+    @Override
+    public String toString() {
+        return "erreur";
+    }
 }

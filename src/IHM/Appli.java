@@ -4,6 +4,7 @@ import jeu.plateau;
 
 public class Appli {
     public static void main(String[] args) {
-        new plateau();
+        plateau p = new plateau();
+        System.out.println(p);
     }
 }

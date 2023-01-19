@@ -6,4 +6,9 @@ public class reine extends pieces {
     public reine(int x, int y, couleur c, plateau p){
         super(c,p,x,y);
     }
+
+
+    public String toString(){
+        return "Q";
+    }
 }

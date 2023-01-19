@@ -7,4 +7,7 @@ public class pion extends pieces {
         super(c,p,x,y);
     }
 
+    public String toString(){
+        return "P";
+    }
 }

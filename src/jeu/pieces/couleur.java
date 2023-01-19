@@ -1,12 +1,12 @@
 package jeu.pieces;
 
 public enum couleur {
-    blanc('B'),
-    noir('N');
+    blanc("Blanc"),
+    noir("Noir");
 
-    private char symbole;
+    private String symbole;
 
-    couleur(char symbole) {
+    couleur(String symbole) {
         this.symbole = symbole;
     }
 
@@ -14,7 +14,7 @@ public enum couleur {
         return "" + this.symbole;
     }
 
-    public char getSymbole() {
+    public String getSymbole() {
         return this.symbole;
     }
 }
