@@ -12,8 +12,10 @@ public class plateau {
     }
 
     public void initP(){
-        for (int a = 0; a < TAILLE; a++)
-            setC(6,a,new pion(6,a,couleur.noir,this));
+        for (int a = 0; a < TAILLE; a++) {
+            setC(6, a, new pion(6, a, couleur.noir, this));
+            setC(1,a,new pion(1,a,couleur.blanc,this));
+        }
         setC(7,0,new tour(7,0, couleur.noir, this));
         setC(7,1,new cavalier(7,0, couleur.noir, this));
         setC(7,2,new fou(7,0, couleur.noir, this));
@@ -23,8 +25,6 @@ public class plateau {
         setC(7,6,new cavalier(7,0, couleur.noir, this));
         setC(7,7,new tour(7,0, couleur.noir, this));
 
-        for (int a = 0; a < TAILLE; a++)
-            setC(1,a,new pion(1,a,couleur.blanc,this));
         setC(0,0,new tour(0,0, couleur.blanc, this));
         setC(0,1,new cavalier(0,0, couleur.blanc, this));
         setC(0,2,new fou(0,0, couleur.blanc, this));
@@ -37,6 +37,10 @@ public class plateau {
 
     public void setC(int x, int y, pieces p){
         plateau[x][y] = p;
+    }
+
+    public pieces getC(int x,int y){
+        return (x<0 || x>7 || y<0 || y>7) ? null : plateau[x][y];
     }
 
     private String CadreJeu(){
@@ -74,5 +78,4 @@ public class plateau {
         }
         return s;//affichage plateau
     }
-
 }
