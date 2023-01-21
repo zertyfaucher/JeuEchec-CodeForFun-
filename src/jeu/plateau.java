@@ -5,6 +5,9 @@ import jeu.pieces.*;
 public class plateau {
     private static final int TAILLE = 8;
     private static pieces[][] plateau;
+    private static boolean priseEnPassantPossible;
+    private static pieces dernierePiece;
+    private int cote;
 
     public plateau(){
         this.plateau = new pieces[TAILLE][TAILLE];
@@ -52,11 +55,39 @@ public class plateau {
         return s;
     }
 
-    public static void deplacer(couleur c,int x,int y, int x2, int y2){
+    public void deplacer(couleur c, int x, int y, int x2, int y2) {
         if (plateau[x][y].coupPossible(c,x,y,x2,y2)) {
-            setC(x2,y2,plateau[x][y]);
-            setC(x, y, null);
+            if (plateau[x][y] instanceof pion) {//verif prise en passant (pion)
+                verifPriseEnPassantPossible(x, y, x2, y2);
+            }else priseEnPassantPossible = false;
+            plateau[x2][y2] = plateau[x][y];
+            plateau[x][y] = null;
+            dernierePiece = plateau[x2][y2];//sauvegarde le dernier coup joue
+            ValideEtSetPriseEnPassant(x2, y2);//si condition prise en passant valide alors effectue suppr du pion ennemi
+        }else System.out.println("err");// a modif par rejouer ou jsp
+    }
+
+    private void verifPriseEnPassantPossible(int x,int y,int x2,int y2){// methode pour pion
+        cote = plateau[x][y].getC().getSymbole() == "Blanc" ? -1 : 1;
+        if (y2==y && x == x2-(2*cote)){
+            priseEnPassantPossible = true;
+        }else priseEnPassantPossible = false;
+    }
+
+    private void ValideEtSetPriseEnPassant(int x2, int y2){// methode pour pion
+        if (pion.getPriseEnPassantValide()){
+            cote = plateau[x2][y2].getC().getSymbole() == "Blanc" ? -1 : 1;
+            plateau[x2 - cote][y2] = null;
+            pion.setPriseEnPassantValide();
         }
+    }
+
+    public static boolean GetPriseEnPassantPossible() {
+        return priseEnPassantPossible;
+    }
+
+    public static pieces getDernierePiece() {
+        return dernierePiece;
     }
 
     public String toString(){
