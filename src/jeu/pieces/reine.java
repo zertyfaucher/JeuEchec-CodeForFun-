@@ -7,6 +7,9 @@ public class reine extends pieces {
         super(c,p,x,y);
     }
 
+    public boolean coupPossible(couleur c, int x, int y, int x2, int y2){
+        return false;
+    }
 
     public String toString(){
         return "Q";

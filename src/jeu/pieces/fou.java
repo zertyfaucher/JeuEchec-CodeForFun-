@@ -10,4 +10,8 @@ public class fou extends pieces {
     public String toString(){
         return "F";
     }
+
+    public boolean coupPossible(couleur c, int x, int y, int x2, int y2){
+        return false;
+    }
 }

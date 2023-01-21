@@ -13,29 +13,29 @@ public class plateau {
 
     public void initP(){
         for (int a = 0; a < TAILLE; a++) {
-            setC(6, a, new pion(6, a, couleur.noir, this));
-            setC(1,a,new pion(1,a,couleur.blanc,this));
+            setC(1, a, new pion(1, a, couleur.noir, this));
+            setC(6,a,new pion(6,a,couleur.blanc,this));
         }
-        setC(7,0,new tour(7,0, couleur.noir, this));
-        setC(7,1,new cavalier(7,0, couleur.noir, this));
-        setC(7,2,new fou(7,0, couleur.noir, this));
-        setC(7,3,new reine(7,0, couleur.noir, this));
-        setC(7,4,new roi(7,0, couleur.noir, this));
-        setC(7,5,new fou(7,0, couleur.noir, this));
-        setC(7,6,new cavalier(7,0, couleur.noir, this));
-        setC(7,7,new tour(7,0, couleur.noir, this));
+        setC(0,0,new tour(0,0, couleur.noir, this));
+        setC(0,1,new cavalier(0,1, couleur.noir, this));
+        setC(0,2,new fou(0,2, couleur.noir, this));
+        setC(0,3,new reine(0,3, couleur.noir, this));
+        setC(0,4,new roi(0,4, couleur.noir, this));
+        setC(0,5,new fou(0,5, couleur.noir, this));
+        setC(0,6,new cavalier(0,6, couleur.noir, this));
+        setC(0,7,new tour(0,7, couleur.noir, this));
 
-        setC(0,0,new tour(0,0, couleur.blanc, this));
-        setC(0,1,new cavalier(0,0, couleur.blanc, this));
-        setC(0,2,new fou(0,0, couleur.blanc, this));
-        setC(0,3,new reine(0,0, couleur.blanc, this));
-        setC(0,4,new roi(0,0, couleur.blanc, this));
-        setC(0,5,new fou(0,0, couleur.blanc, this));
-        setC(0,6,new cavalier(0,0, couleur.blanc, this));
-        setC(0,7,new tour(0,0, couleur.blanc, this));
+        setC(7,0,new tour(7,0, couleur.blanc, this));
+        setC(7,1,new cavalier(7,1, couleur.blanc, this));
+        setC(7,2,new fou(7,2, couleur.blanc, this));
+        setC(7,3,new reine(7,3, couleur.blanc, this));
+        setC(7,4,new roi(7,4, couleur.blanc, this));
+        setC(7,5,new fou(7,5, couleur.blanc, this));
+        setC(7,6,new cavalier(7,6, couleur.blanc, this));
+        setC(7,7,new tour(7,7, couleur.blanc, this));
     }
 
-    public void setC(int x, int y, pieces p){
+    public static void setC(int x, int y, pieces p){
         plateau[x][y] = p;
     }
 
@@ -50,6 +50,13 @@ public class plateau {
             s +=" ---";
         s+="\n";
         return s;
+    }
+
+    public static void deplacer(couleur c,int x,int y, int x2, int y2){
+        if (plateau[x][y].coupPossible(c,x,y,x2,y2)) {
+            setC(x2,y2,plateau[x][y]);
+            setC(x, y, null);
+        }
     }
 
     public String toString(){

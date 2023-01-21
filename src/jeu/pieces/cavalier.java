@@ -10,4 +10,8 @@ public class cavalier extends pieces {
     public String toString(){
         return "C";
     }
+
+    public boolean coupPossible(couleur c, int x, int y, int x2, int y2){
+        return false;
+    }
 }
