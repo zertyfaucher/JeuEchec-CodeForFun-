@@ -42,7 +42,7 @@ public class plateau {
         plateau[x][y] = p;
     }
 
-    public pieces getC(int x,int y){
+    public pieces getCase(int x,int y){
         return (x<0 || x>7 || y<0 || y>7) ? null : plateau[x][y];
     }
 
@@ -68,7 +68,7 @@ public class plateau {
     }
 
     private void verifPriseEnPassantPossible(int x,int y,int x2,int y2){// methode pour pion
-        cote = plateau[x][y].getC().getSymbole() == "Blanc" ? -1 : 1;
+        cote = plateau[x][y].getCouleur().getSymbole() == "Blanc" ? -1 : 1;
         if (y2==y && x == x2-(2*cote)){
             priseEnPassantPossible = true;
         }else priseEnPassantPossible = false;
@@ -76,7 +76,7 @@ public class plateau {
 
     private void ValideEtSetPriseEnPassant(int x2, int y2){// methode pour pion
         if (pion.getPriseEnPassantValide()){
-            cote = plateau[x2][y2].getC().getSymbole() == "Blanc" ? -1 : 1;
+            cote = plateau[x2][y2].getCouleur().getSymbole() == "Blanc" ? -1 : 1;
             plateau[x2 - cote][y2] = null;
             pion.setPriseEnPassantValide();
         }

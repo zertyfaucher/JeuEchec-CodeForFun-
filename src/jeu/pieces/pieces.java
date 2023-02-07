@@ -24,7 +24,7 @@ public abstract class pieces {
     }
 
 
-    public couleur getC() {return c;}
+    public couleur getCouleur() {return c;}
 
     public abstract boolean coupPossible(couleur c, int x, int y, int x2, int y2);
 

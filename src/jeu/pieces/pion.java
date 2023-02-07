@@ -20,22 +20,22 @@ public class pion extends pieces {
 
         if (x==x2-cote) {
             if (y2 == y - 1 || y2 == y + 1)//ajout coup spe a faire avec le bool
-                if (p.getC(x2, y2) != null){//si le pion existe
-                    if (p.getC(x2, y2).getC() != c) //si c'est un pion ennemi
+                if (p.getCase(x2, y2) != null){//si le pion existe
+                    if (p.getCase(x2, y2).getCouleur() != c) //si c'est un pion ennemi
                         return true;
-                }else if (p.getC(x2, y2) == null)//cas particulier pour prise en passant
-                    if (p.getC(x2 - cote, y2) != null)
+                }else if (p.getCase(x2, y2) == null)//cas particulier pour prise en passant
+                    if (p.getCase(x2 - cote, y2) != null)
                         if (plateau.GetPriseEnPassantPossible())
                             if (plateau.getDernierePiece().getX() == x2 + cote && plateau.getDernierePiece().getY() == y2) {
                                 priseEnPassantValide = true;
                                 return true;
                             }
             if (y2 == y)
-                if (p.getC(x2,y2)==null)
+                if (p.getCase(x2,y2)==null)
                     return true;
         }
         if (y2==y && x == x2-(2*cote) && premierCoup)//ajout verif premier coup a faire
-            if (p.getC(x2-(1*cote),y2)==null && p.getC(x2,y2) == null) {
+            if (p.getCase(x2-(1*cote),y2)==null && p.getCase(x2,y2) == null) {
                 premierCoup = false;
                 return true;
             }
